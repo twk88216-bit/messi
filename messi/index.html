@@ -3,164 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بث الأسطورة ليو ميسي</title>
-    <!-- مكتبة HLS للتشغيل -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <title>الأسطورة ليو ميسي | البث المباشر</title>
     <style>
-        body {
-            background-color: #050505;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            padding: 10px;
+        :root { --primary: #e63946; --gold: #f4a261; --bg: #09090b; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
+        
+        .hero { text-align: center; z-index: 1; padding: 20px; }
+        h1 { font-size: 3rem; margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        h1 span { color: var(--primary); }
+        p { color: #888; font-size: 1.2rem; margin-bottom: 40px; }
+        
+        .btn-entry { 
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), #b91c1c);
+            color: #fff; padding: 20px 60px; font-size: 1.5rem; font-weight: bold;
+            text-decoration: none; border-radius: 50px; box-shadow: 0 10px 30px rgba(230,57,70,0.4);
+            transition: 0.4s; border: 2px solid rgba(255,255,255,0.1);
         }
+        .btn-entry:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(230,57,70,0.6); }
 
-        .main-container {
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .stream-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: #16161a;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .stream-title { font-weight: bold; font-size: 1.2rem; }
-
-        .live-badge {
-            display: flex;
-            align-items: center;
-            background: #ff3b30;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .live-dot { width: 8px; height: 8px; background: white; border-radius: 50%; margin-left: 5px; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        .player-card {
-            background: #000;
-            padding: 5px;
-            border-bottom: 2px solid #16161a;
-        }
-
-        video { width: 100%; height: auto; display: block; background: #000; }
-
-        .control-bar {
-            padding: 15px;
-            background: #16161a;
-            text-align: center;
-        }
-
-        .refresh-btn {
-            background: #0088cc;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .refresh-icon { width: 20px; height: 20px; fill: white; margin-left: 8px; }
-
-        .stream-footer {
-            background: #16161a;
-            padding: 20px;
-            border-radius: 0 0 10px 10px;
-            text-align: center;
-        }
-
-        .footer-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #8e8e93;
-            margin-bottom: 10px;
-        }
-
-        .tg-link {
-            display: inline-flex;
-            align-items: center;
-            color: #0088cc;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: color 0.2s;
-        }
-        .tg-link:hover { color: #24a1de; }
+        .rights { position: absolute; bottom: 30px; font-size: 0.9rem; color: #555; }
+        
+        /* تأثيرات بصرية */
+        .glow { position: absolute; width: 300px; height: 300px; background: var(--primary); filter: blur(150px); opacity: 0.2; }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="stream-header">
-            <div class="stream-title">بث الأسطورة ليو ميسي المباشر</div>
-            <div class="live-badge">
-                <div class="live-dot"></div>
-                مباشر
-            </div>
-        </div>
+    <div class="glow" style="top: 10%; left: 10%;"></div>
+    <div class="glow" style="bottom: 10%; right: 10%;"></div>
 
-        <div class="player-card">
-            <!-- تمت إضافة playsinline لتفعيل التكبير التلقائي على أجهزة الموبايل -->
-            <video id="video" controls autoplay playsinline webkit-playsinline></video>
-            
-            <div class="control-bar">
-                <button class="refresh-btn" onclick="reloadStream()">
-                    <svg class="refresh-icon" viewBox="0 0 24 24">
-                        <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-                    </svg>
-                    تحديث البث 🔄
-                </button>
-            </div>
-        </div>
-
-        <div class="stream-footer">
-            <div class="footer-text">قناة الأسطورة ليو ميسي</div>
-            <a href="https://t.me/messi_1" target="_blank" class="tg-link">@messi_1</a>
-        </div>
+    <div class="hero">
+        <h1>الأسطورة <span>ليو ميسي</span></h1>
+        <p>استعد لمشاهدة مباراة الأرجنتين بأعلى جودة ممكنة 🇦🇷</p>
+        
+        <!-- الرابط المباشر للتليجرام -->
+        <a href="https://t.me/MessiWorldAr?livestream" class="btn-entry" target="_blank">
+            ابدأ المشاهدة الآن ⚽
+        </a>
     </div>
 
-    <script>
-        var video = document.getElementById('video');
-        var videoSrc = 'https://sh.kooraa36.cfd/endroom1.m3u8';
-        var hls;
+    <div class="rights">
+        جميع الحقوق محفوظة &copy; 2026 | الأسطورة ليو ميسي
+    </div>
 
-        function initStream() {
-            if (Hls.isSupported()) {
-                if (hls) { hls.destroy(); }
-                hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                    video.play();
-                });
-            }
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = videoSrc;
-                video.addEventListener('loadedmetadata', function() {
-                    video.play();
-                });
-            }
-        }
-
-        function reloadStream() {
-            initStream();
-        }
-
-        initStream();
-    </script>
 </body>
 </html>
-
-
