@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسطورة ليو ميسي | البث المباشر</title>
+    <title>البث المباشر المحدث | الأسطورة ليو ميسي</title>
     <style>
-        :root { --primary: #e63946; --gold: #f4a261; --bg: #09090b; }
-        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
+        :root { --primary: #22c55e; --gold: #f59e0b; --bg: #030712; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; text-align: center; }
         
-        .hero { text-align: center; z-index: 1; padding: 20px; }
-        h1 { font-size: 3rem; margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
-        h1 span { color: var(--primary); }
-        p { color: #888; font-size: 1.2rem; margin-bottom: 40px; }
+        .hero { z-index: 1; padding: 20px; max-width: 600px; }
+        .badge { background: rgba(34, 197, 94, 0.15); color: var(--primary); padding: 8px 20px; border-radius: 20px; font-weight: bold; border: 1px solid var(--primary); display: inline-block; margin-bottom: 20px; animation: bounce 2s infinite; }
+        
+        h1 { font-size: 2.8rem; margin: 0 0 10px 0; color: #fff; }
+        h1 span { color: var(--gold); }
+        p { color: #9ca3af; font-size: 1.1rem; margin-bottom: 30px; }
         
         .btn-entry { 
-            background: linear-gradient(45deg, var(--primary), #b91c1c);
-            color: #fff; padding: 20px 60px; font-size: 1.5rem; font-weight: bold;
-            text-decoration: none; border-radius: 50px; box-shadow: 0 10px 30px rgba(230,57,70,0.4);
-            transition: 0.4s; border: 2px solid rgba(255,255,255,0.1);
+            display: inline-block;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: #fff; padding: 18px 50px; font-size: 1.4rem; font-weight: bold;
+            text-decoration: none; border-radius: 50px; box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+            transition: 0.3s; border: 2px solid rgba(255,255,255,0.2);
         }
-        .btn-entry:hover { transform: scale(1.1); box-shadow: 0 20px 40px rgba(230,57,70,0.6); }
+        .btn-entry:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6); }
 
-        .rights { position: absolute; bottom: 30px; font-size: 0.9rem; color: #444; }
+        .rights { position: absolute; bottom: 20px; font-size: 0.85rem; color: #4b5563; }
         
-        /* تأثيرات بصرية */
-        .glow { position: absolute; width: 300px; height: 300px; background: var(--primary); filter: blur(150px); opacity: 0.2; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="glow" style="top: 10%; left: 10%;"></div>
-    <div class="glow" style="bottom: 10%; right: 10%;"></div>
-
     <div class="hero">
+        <div class="badge">✨ تم تحديث البث بنجاح - نسخة 2026 ✨</div>
         <h1>الأسطورة <span>ليو ميسي</span></h1>
-        <p>استعد لمشاهدة مباراة الأرجنتين بأعلى جودة ممكنة</p>
+        <p>البث المباشر لمباراة الأرجنتين جاهز الآن، اضغط بالأسفل للمشاهدة الفورية بجودة عالية.</p>
         
-        <a href="https://cu.freshfin.site/mercaz1_360/index.m3u8" class="btn-entry" target="_blank">
-            ابدأ المشاهدة الآن ⚽
+        <a href="https://t.me/MessiWorldAr?livestream" class="btn-entry" target="_blank">
+            📺 اضغط هنا لدخول البث المباشر ⚽
         </a>
     </div>
 
